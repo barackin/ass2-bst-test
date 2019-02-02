@@ -493,6 +493,37 @@ void test_iqbalo01(){
     cout << "Ending test_iqbalo01" << endl;
 }
 
+void test_bazenn01() {
+    cout << "Starting test_bazenn01" << endl;
+    cout << "* Testing Traversal Order" << endl;
+    BST<int> test;
+    test.Add(8);
+    test.Add(2);
+    test.Add(7);
+    test.Add(3);
+    test.Add(9);
+    test.Add(1);
+    test.Add(4);
+    test.Add(5);
+
+    TreeVisitor::ResetSS();
+    test.InorderTraverse(TreeVisitor::visitor);
+    string result = "12345789";
+    assert(TreeVisitor::GetSS() == result);
+
+    TreeVisitor::ResetSS();
+    test.PreorderTraverse(TreeVisitor::visitor);
+    result = "82173459";
+    assert(TreeVisitor::GetSS() == result);
+
+    TreeVisitor::ResetSS();
+    test.PostorderTraverse(TreeVisitor::visitor);
+    result = "15437298";
+    assert(TreeVisitor::GetSS() == result);
+
+    cout << "Ending test_bazen01" << endl;
+}
+
 void test_msorvik01() {
   cout << "beginning tests" << endl;
   // creating a test tree
@@ -537,5 +568,6 @@ void testBSTAll() {
   test_Nabu99();
   test_dsagredo();
   test_iqbalo01();
+  test_bazenn01();
   test_msorvik01();
 }
